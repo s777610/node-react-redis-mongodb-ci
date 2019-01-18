@@ -1,4 +1,4 @@
-# AdvancedNodeStarter
+# Node-React-Redis-Mongodb-CI
 This application was built by Node, MongoDB, Redis and react. On the back-end, the restful-API was built by express,  which is a  framework. On the front-end, it was built by React. In addition, I used Redis to cache the data in order to improve the performance of this app. All data is stored on MongoDB. For testing, I used jest to implement the unit test. Whenever I push code to GitHub, Travis CI will pull my code and build testing environment in order to run the test.
 
 ### Start the redis locally
