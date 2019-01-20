@@ -1,17 +1,17 @@
 ## Node-React-Redis-Mongodb-CI
-This application was built by Node, MongoDB, Redis and react. On the back-end, the restful-API was built by express,  which is a framework. On the front-end, it was built by React. In addition, I used Redis to cache the data in order to improve the performance of this app. All data is stored on MongoDB. All images are stored on AWS S3. For testing, I used jest to implement the unit test. Whenever I push code to GitHub, Travis CI will pull my code and build testing environment in order to run the test.
+This application was built by Node, MongoDB, Redis and react. On the back-end, the restful-API was built by express,  which is a framework. On the front-end, it was built by React. In addition, I used Redis to cache the data in order to improve the performance of this app. All data is stored on MongoDB. All images are stored on AWS S3. For testing, I used jest to implement the unit test. Whenever I push code to GitHub, Travis CI will pull my code and build testing environment in order to run the test.<br>
 
 ## Features
-1. Login: 
+1. Login: <br>
 Users can log in this application via google account. It implements OAuth 2.0. It uses passport and GoogleStrategy to manage auth. After login, the information fo users will be stored on MongoDB.
 
-2. Cache:
+2. Cache:<br>
 I used Redis to cache data in order to improve the performance. Redis is a key-value pair memory server. All MongoDB query go through Redis before arriving in MongoDB. The redis check if it has a record corresponding to that query. If it does, it will send responses back to express. If it doesn't, it will forward the query to MongoDB and store the result for future need.
 
-3. Image uploading:
+3. Image Upload:<br>
 All images are stored on AWS S3. Whenever a user wants to upload an image to the application, the client side will make a request to express server to get key and get pre-signed URL from AWS S3. After that, client-side makes a put request to upload an image to S3 directly without going through the express server. By doing so, it can prevent consuming too much server-side resource when uploading images.
 
-4. Test
+4. Test:<br>
 I used Jest to run unit test. In addition, I use Puppeteer, which is a Node library provides a high-level API to control Chrome or Chromium over the DevTools Protocol, to run headless testing. Whenever I push my code to Github, the Travis CI will pull my code and run test for it automatically.
 
 ## Architecture
