@@ -34,6 +34,7 @@ app.use(passport.session());
 
 require("./routes/authRoutes")(app);
 require("./routes/blogRoutes")(app);
+require("./routes/uploadRoutes")(app);
 
 // production
 if (["production", "ci"].includes(process.env.NODE_ENV)) {
