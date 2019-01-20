@@ -11,8 +11,23 @@ export const handleToken = token => async dispatch => {
   dispatch({ type: FETCH_USER, payload: res.data });
 };
 
-export const submitBlog = (values, history) => async dispatch => {
-  const res = await axios.post("/api/blogs", values);
+export const submitBlog = (values, file, history) => async dispatch => {
+  // make request to express server to get key, and get pre sign URL from aws s3
+  const uploadConfig = await axios.get("/api/upload");
+
+  // put image on AWS S3
+  await axios.put(uploadConfig.data.url, file, {
+    headers: {
+      "Content-Type": file.type
+    }
+  });
+
+  // create new post including image key(URL)
+  const res = await axios.post("/api/blogs", {
+    ...values,
+    imageUrl: uploadConfig.data.key
+  });
+
   history.push("/blogs");
   dispatch({ type: FETCH_BLOG, payload: res.data });
 };
