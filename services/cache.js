@@ -34,7 +34,7 @@ mongoose.Query.prototype.exec = async function() {
 
   // if we do, return that
   if (cacheValue) {
-    // from json to js obj, but exec will return mongoose model
+    // from json to js obj, but normally exec will return mongoose model
     const document = JSON.parse(cacheValue);
 
     return Array.isArray(document)

@@ -21,6 +21,7 @@ module.exports = app => {
     res.send(blogs);
   });
 
+  // use cleanCache middleware to clean up Cache when creating new posts
   app.post("/api/blogs", requireLogin, cleanCache, async (req, res) => {
     const { title, content, imageUrl } = req.body;
 
