@@ -11,6 +11,7 @@ export const handleToken = token => async dispatch => {
   dispatch({ type: FETCH_USER, payload: res.data });
 };
 
+// receive form value and image, later redirect user
 export const submitBlog = (values, file, history) => async dispatch => {
   // make request to express server to get key, and get pre sign URL from aws s3
   const uploadConfig = await axios.get("/api/upload");
@@ -28,8 +29,8 @@ export const submitBlog = (values, file, history) => async dispatch => {
     imageUrl: uploadConfig.data.key
   });
 
-  history.push("/blogs");
-  dispatch({ type: FETCH_BLOG, payload: res.data });
+  history.push("/blogs"); // redirect user
+  dispatch({ type: FETCH_BLOG, payload: res.data }); // react receive new blog we just created
 };
 
 export const fetchBlogs = () => async dispatch => {
